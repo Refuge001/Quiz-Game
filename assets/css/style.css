@@ -1,0 +1,17 @@
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.btn {
+}
