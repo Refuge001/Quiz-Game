@@ -1,7 +1,6 @@
 .container {
   flex-wrap;
   position: relative;
-  border: 3px solid green;
 }
 
 h1 {
@@ -11,6 +10,11 @@ h1 {
 h2 {
   font-size: 20px;
   text-align: center;
+}
+
+.button {
+  border-radius: 12px;
+  margin: 3px;
 }
 
 #start-btn {
