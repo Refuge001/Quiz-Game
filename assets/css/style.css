@@ -16,10 +16,11 @@ h2 {
 #start-btn {
 }
 
-.timer {
+#timer {
 flex-wrap;
   border: 1px solid green;
   position: fixed;
   top: 0;
   right: 0;
+  margin-right: 5px;
 }
