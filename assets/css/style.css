@@ -1,5 +1,5 @@
 .container {
-  height: 200px;
+  flex-wrap;
   position: relative;
   border: 3px solid green;
 }
@@ -15,12 +15,26 @@ h2 {
 
 #start-btn {
 }
+#score-btn {
+  margin-left: 5px;
+}
 
 #timer {
 flex-wrap;
-  border: 1px solid green;
   position: fixed;
   top: 0;
   right: 0;
   margin-right: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#score {
+  flex-wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 5px;
+  font-size: 24px;
+  font-weight: bold;
 }

@@ -14,15 +14,34 @@
     <title>Quiz Game</title>
   </head>
   <body>
+    <div id="timer">
+    </div>
+    <div id="score">
+      Score:
+    </div>
     <div class="container col-lg-6">
       <h1>Coding Quiz Challenge<h1>
         <hr />
         <h2>Try to answer all the questions in the time provided.</h2>
+        <div>
+          Place Holder for questions
+        </div>
+        <div class="row">          
+          <button class="float-left" id="choice-1">1. Answer</button>
+        </div>
+        <div class="row">
+          <button class="float-right" id="choice-2">2. Answer</button>
+        </div>
+        <div class="row">
+          <button class="float-left" id="choice-3">3. Answer</button>
+        </div>
+        <div class="row">
+          <button class="float-right" id="choice-4">4. Answer</button>
+        </div>
     </div>
     <div class="d-flex justify-content-center mt-2">
       <button id="start-btn">Start Quiz</button>
-    </div>
-    <div id="timer">
+      <button id="score-btn">Submit Score</button>
     </div>
 
     <script src="./assets/js/script.js"></script>

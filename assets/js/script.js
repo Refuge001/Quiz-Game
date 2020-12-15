@@ -16,9 +16,7 @@ function startTimer() {
         clearInterval(Interval);
         alert("Your time is up!");
       }
-
     }, 1000);
-
   }
 }
 
