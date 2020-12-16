@@ -19,12 +19,13 @@ h2 {
 
 #start-btn {
 }
+
 #score-btn {
   margin-left: 5px;
 }
 
 #timer {
-flex-wrap;
+  flex-wrap;
   position: fixed;
   top: 0;
   right: 0;
