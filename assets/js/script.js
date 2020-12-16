@@ -111,7 +111,7 @@ function nextQuestion() {
     choice4.innerText = answerArr4[3];
     questionCounter++;
   }
-  else if (questionCounter === 5) {
+  else if (questionCounter === 6) {
     finishGame();
   }
   //answerEl.textcontent = answerArr[];
