@@ -1,5 +1,6 @@
 .container {
   flex-wrap;
+  min-height: 200px;
   position: relative;
 }
 
@@ -15,6 +16,10 @@ h2 {
 .button {
   border-radius: 12px;
   margin: 3px;
+}
+
+.answer {
+  /* display: none; */
 }
 
 #start-btn {
