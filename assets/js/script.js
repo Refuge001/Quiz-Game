@@ -5,26 +5,26 @@ var startButton = document.querySelector("#start-btn");
 var submitButton = document.querySelector("#score-btn");
 //getElementsByClassName returns an array
 var answerButton = document.getElementsByClassName("answer");
+var questionEl = document.querySelector("#questions");
 var score = [];
 
-var correctAnswer = answerButton[1]; //
+var correctAnswer = answerButton[1]; // Still need to figure this out
 
 const questionArr = ["Question 1?", "Question 2?"];
 const answerArr = ["Answer 1", "Answer 2", "Answer 3", "Answer 4"];
 
 
 function startTimer() {
-  interval = "";
   totalSeconds = 75;
+  clearInterval(interval);
   setTime();
   function setTime() {
-    var Interval = setInterval(function () {
+    interval = setInterval(function () {
       totalSeconds--;
       secondsDisplay.textContent = "Timer: " + totalSeconds;
-
       if (totalSeconds === 0) {
-        clearInterval(Interval);
         alert("Your time is up!");
+        clearInterval(interval);
       }
     }, 1000);
   }
@@ -35,13 +35,15 @@ function startQuiz() {
 }
 
 function doubleStart() {
-  score = "";
+  score = [];
   startTimer();
   startQuiz();
+  questionEl.textContent = questionArr[0];
 }
 
 function submitAnswer() {
   alert("Answer Submitted")
+  //i think another loop needed for answers/question replacement
 };
 //loop required to go through answer button Array adding eventListener
 for (let i = 0; i < answerButton.length; i++) {
