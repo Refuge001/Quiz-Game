@@ -38,6 +38,8 @@ const correctAnswer5 = answerArr4[3];
 function doubleStart() {
   formScore.classList.add("hide"); // Form div reveal
   highScore.classList.add("hide");
+  submitButton.classList.add("hide");
+  startButton.classList.add("hide");
   scoreBoard.innerHTML = "Score: " + scoreValue;
   secondsDisplay.textContent = "Timer: " + totalSeconds;
   scoreValue = 0;
@@ -147,7 +149,9 @@ function submitAnswer(event) {
 function finishGame() {
   questionEl.innerText = "";
   formScore.classList.remove("hide"); // Form div reveal
-  highScore.classList.remove("hide"); // TO DO: HIGH SCORE INPUT USING submiteScore()
+  submitButton.classList.remove("hide");
+  startButton.classList.remove("hide");
+  highScore.classList.remove("hide"); // //high score reveal
   clearInterval(interval);
   for (let i = 0; i < answerButton.length; i++) {
     answerButton[i].classList.add("hide");
