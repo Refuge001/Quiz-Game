@@ -17,9 +17,15 @@ h2 {
   border-radius: 12px;
   margin: 3px;
 }
-
+#questions {
+  font-size: 20px;
+}
 .answer {
-  /* display: none; */
+ 
+}
+
+.hide {
+  display: none;
 }
 
 #start-btn {
@@ -39,7 +45,7 @@ h2 {
   font-weight: bold;
 }
 
-#score {
+#scoreboard {
   flex-wrap;
   position: fixed;
   top: 0;

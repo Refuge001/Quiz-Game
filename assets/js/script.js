@@ -1,4 +1,4 @@
-var totalSeconds = "";
+var totalSeconds = 0;
 var interval = "";
 var secondsDisplay = document.querySelector("#timer");
 var startButton = document.querySelector("#start-btn");
@@ -11,20 +11,21 @@ var choice3 = document.querySelector("#choice-3");
 var choice4 = document.querySelector("#choice-4");
 var questionEl = document.querySelector("#questions");
 var questionCounter = "";
-var score = [];
+var scoreBoard = document.querySelector("#scoreboard");
+var scoreValue = 0;
 
-console.log(answerButton);
-var correctAnswer = answerButton[1]; // Still need to figure this out
-answerButton[1] = true;
-console.log(answerButton[1]);
+const questionArr = ["What is Javascript's other name?", "Who first created Javascript?", "How do you source an external script?", "Which is an example of an array?", "Which browser has built-in javascript interpreters?"];
+const answerArr0 = ["ECMAScript", "CoffeeScript", "Java", "OBJECTScript"];
+const answerArr1 = ["Bill Gates", "Brendan Eich", "Jerry Baldwin", "Loki, god of Mischief"];
+const answerArr2 = ["\<script load=\"\"\>", "\<script href=\"\"\>", "\<script src=\"\"\>", "\<script import=\"\"\>"];
+const answerArr3 = ["const Arr=\"\";", "const Arr=[];", "var Arr=\"\";", "let Arr=\"\";"];
+const answerArr4 = ["Chrome", "IE", "Firefox", "All of the above"];
 
-const questionArr = ["Question 1?", "Question 2?", "Question 3?", "Question 4?", "Question 5?"];
-const answerArr0 = ["Q1A1", "Q1A2", "Q1A3", "Q1A4"];
-const answerArr1 = ["Q2A1", "Q2A2", "Q2A3", "Q2A4"];
-const answerArr2 = ["Q3A1", "Q3A2", "Q3A3", "Q3A4"];
-const answerArr3 = ["Q4A1", "Q4A2", "Q4A3", "Q4A4"];
-const answerArr4 = ["Q5A1", "Q5A2", "Q5A3", "Q5A4"];
-
+var correctAnswer1 = answerArr0[0];
+var correctAnswer2 = answerArr1[1];
+var correctAnswer3 = answerArr2[2];
+var correctAnswer4 = answerArr3[1];
+var correctAnswer5 = answerArr4[3];
 
 function startTimer() {
   totalSeconds = 75;
@@ -47,34 +48,56 @@ function startQuiz() {
 }
 
 function doubleStart() {
-  score = [];
-  questionCounter = "";
+  scoreBoard.innerHTML = "Score: " + scoreValue;
+  scoreValue = 0;
+  questionCounter = 0;
   startTimer();
   startQuiz();
   questionCounter++;
-  nextQuestion(); // To do: build function to randomize questions from array and present them here (or wherever they need to go)
+  nextQuestion(); // Wishful thinking#1: build function to randomize questions from array and present them here (or wherever they need to go)
 }
 
-function submitAnswer() {
-  if (answerButton === false) {
+function submitAnswer(event) {
+  var buttonText = event.target.innerText;
+  if (buttonText === correctAnswer1) {
+    alert("Correct!");
+    scoreValue++;
+    console.log(scoreValue);
+  } else if (buttonText === correctAnswer2) {
+    alert("Correct!");
+    scoreValue++;
+    console.log(scoreValue);
+  }
+  else if (buttonText === correctAnswer3) {
+    alert("Correct!");
+    scoreValue++;
+    console.log(scoreValue);
+  }
+  else if (buttonText === correctAnswer4) {
+    alert("Correct!");
+    scoreValue++;
+    console.log(scoreValue);
+  } else if (buttonText === correctAnswer5) {
+    alert("Correct!");
+    scoreValue++;
+    console.log(scoreValue);
+  }
+  else {
     alert("Incorrect!");
     totalSeconds--;
-  } else {
-    alert("Correct!");
-    score++;
   }
   nextQuestion();
-
-  //if-else statement for correct/incorrect answer and question progress
-  //i think another loop needed for answers/question replacement after the first set is created @start
 }
+
 //loop required to go through answer button Array adding eventListener
 for (let i = 0; i < answerButton.length; i++) {
   answerButton[i].addEventListener("click", submitAnswer)
 }
 
 function nextQuestion() {
-  // have answer buttons appear
+  for (let i = 0; i < answerButton.length; i++) {
+    answerButton[i].classList.remove("hide")
+  }
   if (questionCounter === 1) {
     questionEl.innerText = questionArr[0];
     choice1.innerText = answerArr0[0];
@@ -114,11 +137,14 @@ function nextQuestion() {
   else if (questionCounter === 6) {
     finishGame();
   }
-  //answerEl.textcontent = answerArr[];
 }
 
 function finishGame() {
-  alert("Game is finished");
+  alert("Game is finished! " + totalSeconds + " seconds left remaining!");
+  clearInterval(interval);
+  for (let i = 0; i < answerButton.length; i++) {
+    answerButton[i].classList.add("hide")
+  }
 }
 
 function submitScore() {
@@ -126,37 +152,4 @@ function submitScore() {
 }
 
 startButton.addEventListener("click", doubleStart);
-submitButton.addEventListener("click", submitScore);
-
-//answerButton.addEventListener("click", answerSubmit);
-
-// function nextQuestion() {
-//   if (questionEl.textContent = questionArr[4]) {
-//     finishGame();
-//     return;
-//   }
-//   else if (questionEl.textContent = questionArr[3]) {
-//     questionEl.textContent = questionArr[4];
-//     return;
-//   }
-//   else if (questionEl.textContent = questionArr[2]) {
-//     questionEl.textContent = questionArr[3];
-//     return;
-//   } else if (questionEl.textContent = questionArr[1]) {
-//     questionEl.textContent = questionArr[2];
-//     return;
-//   } else if (questionEl.textContent = questionArr[0]) {
-//     questionEl.textContent = questionArr[1];
-//     return;
-//   }
-//   //answerEl.textcontent = answerArr[];
-// }
-
-//Attempt to make buttons appear
-// for (let i = 0; i < answerButton.length; i++) {
-//   if (answerButton[i].style.display === "none") {
-//     answerButton[i].style.display = "block";
-//   } else {
-//     answerButton[i].style.display = "none";
-//   }
-// }
+submitButton.addEventListener("click", submitScore); 
