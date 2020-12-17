@@ -1,39 +1,6 @@
-.container {
-  flex-wrap;
-  min-height: 200px;
-  position: relative;
-}
-
-h1 {
-  text-align: center;
-}
-
-h2 {
-  font-size: 20px;
-  text-align: center;
-}
-
-.button {
-  border-radius: 12px;
-  margin: 3px;
-}
-#questions {
-  font-size: 20px;
-}
-.answer {
- 
-}
-
-.hide {
-  display: none;
-}
-
-#start-btn {
-}
-
-#score-btn {
-  margin-left: 5px;
-}
+/* * {
+  border: 1px solid green;
+} */
 
 #timer {
   flex-wrap;
@@ -53,4 +20,55 @@ h2 {
   margin-left: 5px;
   font-size: 24px;
   font-weight: bold;
+}
+
+.container {
+  flex-wrap;
+  min-height: 200px;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.button {
+  border-radius: 12px;
+  margin: 3px;
+}
+
+.hide {
+  display: none;
+}
+
+#questions {
+  font-size: 20px;
+}
+
+.answer {
+
+}
+
+
+#start-btn {
+}
+
+#score-btn {
+  margin-left: 5px;
+}
+
+#high-score {
+  font-size: 30px;
+  font-weight: bold;
+}
+#disabledTextInput {
+  font-size: 24px;
+}
+.ul {
+  flex-wrap;
 }

@@ -10,12 +10,17 @@ var choice3 = document.querySelector("#choice-3");
 var choice4 = document.querySelector("#choice-4");
 var questionEl = document.querySelector("#questions");
 var scoreBoard = document.querySelector("#scoreboard");
-//Timer, Q/A, score variables
+var highScore = document.querySelector("#high-score"); //hidden high score
+var formScore = document.querySelector("#forminput"); // hidden form
+var inputInit = document.querySelector("#initials"); // hidden text input
+var inputScore = document.querySelector("#input-score"); // hidden UL element
+var disabledScore = document.querySelector("#disabledTextInput"); //hidden score
+//Timer, Q&A, score variables
 var questionCounter = 0;
 var scoreValue = 0;
 var totalSeconds = 75;
 var interval = "";
-//Q/A Arrays
+//Q&A Arrays
 const questionArr = ["What is Javascript's other name?", "Who first created Javascript?", "How do you source an external script?", "Which is an example of an array?", "Which browser has built-in javascript interpreters?"];
 const answerArr0 = ["ECMAScript", "CoffeeScript", "Java", "OBJECTScript"];
 const answerArr1 = ["Bill Gates", "Brendan Eich", "Jerry Baldwin", "Loki, god of Mischief"];
@@ -38,7 +43,7 @@ function doubleStart() {
   questionCounter++;
   startTimer();
   nextQuestion();
-
+  //Timer
   function startTimer() {
     clearInterval(interval);
     setTime();
@@ -53,12 +58,11 @@ function doubleStart() {
       }, 1000);
     }
   }
-
+  //Utilizing question and answer arrays with a counter to keep progression
   function nextQuestion() {
     for (let i = 0; i < answerButton.length; i++) {
       answerButton[i].classList.remove("hide");
     }
-    questions.classList.remove("hide")
     if (questionCounter === 1) {
       questionEl.innerText = questionArr[0];
       choice1.innerText = answerArr0[0];
@@ -101,38 +105,34 @@ function doubleStart() {
   }
   //What happens when we click a button (correct/incorrect and associated score increase/time decrease)
   for (let i = 0; i < answerButton.length; i++) {
-    answerButton[i].addEventListener("click", submitAnswer)
+    answerButton[i].addEventListener("click", submitAnswer);
   }
   function submitAnswer(event) {
     var buttonText = event.target.innerText;
     if (buttonText === correctAnswer1) {
       alert("Correct!");
       scoreValue++;
-      console.log(scoreValue);
     } else if (buttonText === correctAnswer2) {
       alert("Correct!");
       scoreValue++;
-      console.log(scoreValue);
     }
     else if (buttonText === correctAnswer3) {
       alert("Correct!");
       scoreValue++;
-      console.log(scoreValue);
     }
     else if (buttonText === correctAnswer4) {
       alert("Correct!");
       scoreValue++;
-      console.log(scoreValue);
     } else if (buttonText === correctAnswer5) {
       alert("Correct!");
       scoreValue++;
-      console.log(scoreValue);
     }
     else {
       alert("Incorrect!");
-      totalSeconds = totalSeconds - 10;
+      totalSeconds = totalSeconds - 10; // Where time is subtracted for wrong answers
     }
-    scoreBoard.innerHTML = "Score: " + scoreValue;
+    scoreBoard.innerHTML = "Score: " + scoreValue; //Where score is actually updated
+    disabledScore.innerHTML = "Your score: " + scoreValue; // hidden score value
     nextQuestion();
   }
   //What happens when game ends (out of time/questions)
@@ -140,13 +140,18 @@ function doubleStart() {
     questionEl.innerText = "";
     alert("Game is finished! " + totalSeconds + " seconds left remaining!");
     clearInterval(interval);
+    formScore.classList.remove("hide"); // Form div reveal
+    highScore.classList.remove("hide"); // TO DO: HIGH SCORE INPUT USING submiteScore()
     for (let i = 0; i < answerButton.length; i++) {
-      answerButton[i].classList.add("hide")
+      answerButton[i].classList.add("hide");
     }
   }
 }
 
 function submitScore() {
+  var initials = inputInit.innerText; // last real puzzle remaining
+  console.log(initials);
+  inputScore.innerText = initials + ": " + scoreValue;
   alert("submit clicked");
 }
 
