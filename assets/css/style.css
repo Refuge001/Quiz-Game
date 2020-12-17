@@ -1,7 +1,3 @@
-/* * {
-  border: 1px solid green;
-} */
-
 #timer {
   flex-wrap;
   position: fixed;
@@ -25,7 +21,6 @@
 .container {
   flex-wrap;
   min-height: 200px;
-  position: relative;
 }
 
 h1 {
@@ -50,14 +45,6 @@ h2 {
   font-size: 20px;
 }
 
-.answer {
-
-}
-
-
-#start-btn {
-}
-
 #score-btn {
   margin-left: 5px;
 }
@@ -66,9 +53,12 @@ h2 {
   font-size: 30px;
   font-weight: bold;
 }
+
 #disabledTextInput {
   font-size: 24px;
 }
-.ul {
+
+.ol {
   flex-wrap;
+  margin-left: 36px;
 }
