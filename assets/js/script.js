@@ -10,6 +10,8 @@ var choice3 = document.querySelector("#choice-3");
 var choice4 = document.querySelector("#choice-4");
 var questionEl = document.querySelector("#questions");
 var scoreBoard = document.querySelector("#scoreboard");
+var answerdisplayline = document.querySelector("#answerdisplayline");
+var answerdisplay = document.querySelector("#answerdisplay");
 var highScore = document.querySelector("#high-score"); //hidden high score
 var formScore = document.querySelector("#forminput"); // hidden form
 var inputInit = document.querySelector("#initials"); // hidden text/initials input
@@ -40,9 +42,9 @@ function doubleStart() {
   highScore.classList.add("hide");
   submitButton.classList.add("hide");
   startButton.classList.add("hide");
+  scoreValue = 0;
   scoreBoard.innerHTML = "Score: " + scoreValue;
   secondsDisplay.textContent = "Timer: " + totalSeconds;
-  scoreValue = 0;
   questionCounter = 0;
   totalSeconds = 75;
   questionCounter++;
@@ -106,9 +108,6 @@ function nextQuestion() {
     choice4.innerText = answerArr4[3];
     questionCounter++;
   }
-  else if (questionCounter === 6) {
-    finishGame();
-  }
 }
 
 //What happens when we click a button (correct/incorrect and associated score increase/time decrease),
@@ -119,51 +118,97 @@ for (let i = 0; i < answerButton.length; i++) {
 function submitAnswer(event) {
   var buttonText = event.target.innerText;
   if (buttonText === correctAnswer1) {
-    alert("Correct!");
+    setTimeout(answerDisplay, 1000); // after 2 seconds hide answer display function
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Correct!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
     scoreValue++;
   } else if (buttonText === correctAnswer2) {
-    alert("Correct!");
+    setTimeout(answerDisplay, 1000);
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Correct!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
     scoreValue++;
   }
   else if (buttonText === correctAnswer3) {
-    alert("Correct!");
+    setTimeout(answerDisplay, 1000);
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Correct!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
     scoreValue++;
   }
   else if (buttonText === correctAnswer4) {
-    alert("Correct!");
+    setTimeout(answerDisplay, 1000);
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Correct!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
     scoreValue++;
   } else if (buttonText === correctAnswer5) {
-    alert("Correct!");
+    setTimeout(answerDisplay, 1000);
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Correct!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
     scoreValue++;
   }
   else {
     totalSeconds = totalSeconds - 10; // Where time is subtracted for wrong answers
-    alert("Incorrect!");
+    setTimeout(answerDisplay, 1000);
+    answerdisplayline.classList.remove("hide");
+    answerdisplay.classList.remove("hide");
+    answerdisplay.textContent = "Incorrect!";
+    for (let i = 0; i < answerButton.length; i++) {
+      answerButton[i].classList.add("hide");
+    }
   }
-  scoreBoard.innerText = "Score: " + scoreValue; //Where score is actually updated
-  disabledScore.innerText = "Your score: " + scoreValue; // hidden score value
-  nextQuestion();
+  scoreBoard.innerText = "Score: " + (scoreValue * 100); //Where score is actually updated
+  disabledScore.innerText = "Score: " + (scoreValue * 100); // hidden score value
+  if (questionCounter < 6) {
+    setTimeout(nextQuestion, 1000);
+  }
+  else if (questionCounter === 6) {
+    clearInterval(interval);
+    setTimeout(finishGame, 1000);
+  }
 }
 
+function answerDisplay() {
+  answerdisplayline.classList.add("hide"); //hide <hr />
+  answerdisplay.classList.add("hide"); // hide answer div
+}
 //What happens when game ends (out of time/questions)
 function finishGame() {
-  questionEl.innerText = "";
+  questionEl.innerText = "Game Over!";
   formScore.classList.remove("hide"); // Form div reveal
-  submitButton.classList.remove("hide");
-  startButton.classList.remove("hide");
+  submitButton.classList.remove("hide"); //Submit Button reveal
+  startButton.classList.remove("hide"); // Start button reveal
   highScore.classList.remove("hide"); // //high score reveal
   clearInterval(interval);
   for (let i = 0; i < answerButton.length; i++) {
     answerButton[i].classList.add("hide");
   }
-  alert("Game over!");
 }
 
 function submitScore() {
   var node = document.createElement("LI");
-  var t = document.createTextNode(`${inputInit.textContent}: ${scoreValue}`);
+  var t = document.createTextNode(`${inputInit.textContent}: ${scoreValue * 100}`);
   node.appendChild(t);
   inputScore.appendChild(node);
+  submitButton.classList.add("hide");
 }
 function getInput(e) {
   inputInit.textContent = e.target.value;
@@ -171,4 +216,4 @@ function getInput(e) {
 //loop required to go through answer button Array adding eventListener
 startButton.addEventListener("click", doubleStart);
 submitButton.addEventListener("click", submitScore);
-inputInit.addEventListener("change", getInput)
+inputInit.addEventListener("change", getInput);
