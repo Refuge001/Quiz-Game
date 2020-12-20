@@ -205,7 +205,7 @@ function finishGame() {
 
 function submitScore() {
   var node = document.createElement("LI");
-  var t = document.createTextNode(`${inputInit.textContent}: ${scoreValue * 100}`);
+  var t = document.createTextNode(inputInit.textContent + ": " + (scoreValue * 100));
   node.appendChild(t);
   inputScore.appendChild(node);
   submitButton.classList.add("hide");
