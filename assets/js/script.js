@@ -35,12 +35,12 @@ const correctAnswer2 = answerArr1[1];
 const correctAnswer3 = answerArr2[2];
 const correctAnswer4 = answerArr3[1];
 const correctAnswer5 = answerArr4[3];
-
+// What to do on start
 function doubleStart() {
-  formScore.classList.add("hide"); // Form div reveal
-  highScore.classList.add("hide");
-  submitButton.classList.add("hide");
-  startButton.classList.add("hide");
+  formScore.classList.add("hide"); // Form div hide
+  highScore.classList.add("hide"); // highScore div hide
+  submitButton.classList.add("hide"); // submitButton hide
+  startButton.classList.add("hide"); // startButton hide
   scoreValue = 0;
   totalSeconds = 75;
   scoreBoard.innerHTML = "Score: " + scoreValue;
@@ -72,39 +72,39 @@ function nextQuestion() {
     answerButton[i].classList.remove("hide");
   }
   if (questionCounter === 1) {
-    questionEl.innerText = questionArr[0];
-    choice1.innerText = answerArr0[0];
-    choice2.innerText = answerArr0[1];
-    choice3.innerText = answerArr0[2];
-    choice4.innerText = answerArr0[3];
+    questionEl.textContent = questionArr[0];
+    choice1.textContent = answerArr0[0];
+    choice2.textContent = answerArr0[1];
+    choice3.textContent = answerArr0[2];
+    choice4.textContent = answerArr0[3];
     questionCounter++;
   } else if (questionCounter === 2) {
-    questionEl.innerText = questionArr[1];
-    choice1.innerText = answerArr1[0];
-    choice2.innerText = answerArr1[1];
-    choice3.innerText = answerArr1[2];
-    choice4.innerText = answerArr1[3];
+    questionEl.textContent = questionArr[1];
+    choice1.textContent = answerArr1[0];
+    choice2.textContent = answerArr1[1];
+    choice3.textContent = answerArr1[2];
+    choice4.textContent = answerArr1[3];
     questionCounter++;
   } else if (questionCounter === 3) {
-    questionEl.innerText = questionArr[2];
-    choice1.innerText = answerArr2[0];
-    choice2.innerText = answerArr2[1];
-    choice3.innerText = answerArr2[2];
-    choice4.innerText = answerArr2[3];
+    questionEl.textContent = questionArr[2];
+    choice1.textContent = answerArr2[0];
+    choice2.textContent = answerArr2[1];
+    choice3.textContent = answerArr2[2];
+    choice4.textContent = answerArr2[3];
     questionCounter++;
   } else if (questionCounter === 4) {
-    questionEl.innerText = questionArr[3];
-    choice1.innerText = answerArr3[0];
-    choice2.innerText = answerArr3[1];
-    choice3.innerText = answerArr3[2];
-    choice4.innerText = answerArr3[3];
+    questionEl.textContent = questionArr[3];
+    choice1.textContent = answerArr3[0];
+    choice2.textContent = answerArr3[1];
+    choice3.textContent = answerArr3[2];
+    choice4.textContent = answerArr3[3];
     questionCounter++;
   } else if (questionCounter === 5) {
-    questionEl.innerText = questionArr[4];
-    choice1.innerText = answerArr4[0];
-    choice2.innerText = answerArr4[1];
-    choice3.innerText = answerArr4[2];
-    choice4.innerText = answerArr4[3];
+    questionEl.textContent = questionArr[4];
+    choice1.textContent = answerArr4[0];
+    choice2.textContent = answerArr4[1];
+    choice3.textContent = answerArr4[2];
+    choice4.textContent = answerArr4[3];
     questionCounter++;
   }
 }
@@ -115,7 +115,7 @@ for (let i = 0; i < answerButton.length; i++) {
   answerButton[i].addEventListener("click", submitAnswer);
 }
 function submitAnswer(event) {
-  var buttonText = event.target.innerText;
+  var buttonText = event.target.textContent;
   if (buttonText === correctAnswer1) {
     setTimeout(answerDisplay, 1000); // after 2 seconds hide answer display function
     answerdisplayline.classList.remove("hide");
@@ -135,8 +135,7 @@ function submitAnswer(event) {
       answerButton[i].classList.add("hide");
     }
     scoreValue++;
-  }
-  else if (buttonText === correctAnswer3) {
+  } else if (buttonText === correctAnswer3) {
     setTimeout(answerDisplay, 1000);
     answerdisplayline.classList.remove("hide");
     answerdisplay.classList.remove("hide");
@@ -145,8 +144,7 @@ function submitAnswer(event) {
       answerButton[i].classList.add("hide");
     }
     scoreValue++;
-  }
-  else if (buttonText === correctAnswer4) {
+  } else if (buttonText === correctAnswer4) {
     setTimeout(answerDisplay, 1000);
     answerdisplayline.classList.remove("hide");
     answerdisplay.classList.remove("hide");
@@ -164,8 +162,7 @@ function submitAnswer(event) {
       answerButton[i].classList.add("hide");
     }
     scoreValue++;
-  }
-  else {
+  } else {
     totalSeconds = totalSeconds - 10; // Where time is subtracted for wrong answers
     setTimeout(answerDisplay, 1000);
     answerdisplayline.classList.remove("hide");
@@ -175,8 +172,8 @@ function submitAnswer(event) {
       answerButton[i].classList.add("hide");
     }
   }
-  scoreBoard.innerText = "Score: " + (scoreValue * 100); //Where scoreboard is updated
-  disabledScore.innerText = "Score: " + (scoreValue * 100); // Hidden score value for Submit Score
+  scoreBoard.textContent = "Score: " + (scoreValue * 100); //Where scoreboard is updated
+  disabledScore.textContent = "Score: " + (scoreValue * 100); // Hidden score value for Submit Score
   //Conditionals for game progression
   if (questionCounter < 6) {
     setTimeout(nextQuestion, 1000);
@@ -194,7 +191,7 @@ function answerDisplay() {
 }
 //What happens when game ends (out of time/questions)
 function finishGame() {
-  questionEl.innerText = "Game Over!";
+  questionEl.textContent = "Game Over!";
   formScore.classList.remove("hide"); // Form div reveal
   submitButton.classList.remove("hide"); //Submit Button reveal
   startButton.classList.remove("hide"); // Start button reveal
