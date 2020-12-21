@@ -15,7 +15,7 @@ var answerdisplay = document.querySelector("#answerdisplay");
 var highScore = document.querySelector("#high-score"); //hidden high score
 var formScore = document.querySelector("#forminput"); // hidden form
 var inputInit = document.querySelector("#initials"); // hidden text/initials input
-var inputScore = document.querySelector("#input-score"); // hidden UL element
+var inputScore = document.querySelector("#input-score"); // hidden OL element
 var disabledScore = document.querySelector("#disabledTextInput"); //hidden score
 //Timer, Q&A, score variables
 var questionCounter = 0;
@@ -208,15 +208,32 @@ function finishGame() {
 //What happens when Submit Score button is clicked
 function submitScore() {
   var node = document.createElement("LI");
-  var t = document.createTextNode(inputInit.textContent + ": " + (scoreValue * 100));
+  var t = document.createTextNode((scoreValue * 100) + " - " + inputInit.textContent);
   node.appendChild(t);
   inputScore.appendChild(node);
   submitButton.classList.add("hide");
+  sortScore();
 }
 //When something changes in form, grabs value
 function getInput(e) {
   inputInit.textContent = e.target.value;
 }
+
+//referenced https://www.w3schools.com/howto/howto_js_sort_list.asp to make while loop/sort list - final stretch goal.
+function sortScore() {
+  var loop = true;
+  while (loop) {
+    loop = false;
+    var scoreArr = inputScore.getElementsByTagName("LI");
+    for (let i = 0; i < (scoreArr.length - 1); i++) {
+      if (String(scoreArr[i].innerHTML) < String(scoreArr[i + 1].innerHTML)) {
+        scoreArr[i].parentNode.insertBefore(scoreArr[i + 1], scoreArr[i]);
+        loop = true;
+      }
+    }
+  }
+}
+
 //Event listeners for Start Button, Submit Score, and Form
 startButton.addEventListener("click", doubleStart);
 submitButton.addEventListener("click", submitScore);
