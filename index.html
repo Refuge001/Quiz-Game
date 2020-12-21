@@ -9,60 +9,87 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Quiz Game</title>
   </head>
   <body>
-    <row>
-      <div class="col-lg-2 col-md-2" id="timer">
-    </div>
-      <div class="col-lg-2 col-md-2" id="scoreboard">
-    </div>
-    </row>
-    <div class="row">
-      <div class="container col-lg-4 col-md-6">
-        <h1>Coding Quiz Challenge<h1>
+    <header>
+      <div class="container1">
+        <div class="row">
+          <div class="col-lg-2 col-md-2" id="timer"></div>
+          <div class="col-lg-2 col-md-2" id="scoreboard"></div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="row">
+        <div class="container col-lg-4 col-md-6">
+          <h1>Coding Quiz Challenge</h1>
           <h2>Try to answer all the questions in the time provided.</h2>
-        <hr />
-        <div class="d-flex justify-content-center mb-2" id="questions">
-        </div>
-        <div class="row">
-          <button class="button answer hide col-lg-4 align-middle" id="choice-1"></button>
-        </div>
-        <div class="row">
-          <button class="button answer hide col-lg-4 align-middle" id="choice-2"></button>
-        </div>
-        <div class="row">
-          <button class="button answer hide col-lg-4 align-middle" id="choice-3"></button>
-        </div>
-        <div class="row">
-          <button class="button answer hide col-lg-4 align-middle" id="choice-4"></button>
-        </div>
-        <hr class="hide" id="answerdisplayline" />
-        <div class="row hide justify-content-left" id="answerdisplay">
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button class="button" id="start-btn">Start Quiz</button>
-      <button class="button hide" id="score-btn">Submit Score</button>
-    </div>
-    <form>
-      <div class="form-row justify-content-center hide mt-2" id="forminput">
-        <div class="col-lg-2 col-md-2 col-sm-2">
-          <input type="text" id="initials" class="form-control" placeholder="Your Initials">
-        </div>
-        <div class="col-lg-2 justify-content-center" id="disabledTextInput">
+          <hr />
+          <div class="d-flex justify-content-center mb-2" id="questions"></div>
+          <div class="row">
+            <button
+              class="button answer hide col-lg-4 align-middle"
+              id="choice-1"
+            ></button>
+          </div>
+          <div class="row">
+            <button
+              class="button answer hide col-lg-4 align-middle"
+              id="choice-2"
+            ></button>
+          </div>
+          <div class="row">
+            <button
+              class="button answer hide col-lg-4 align-middle"
+              id="choice-3"
+            ></button>
+          </div>
+          <div class="row">
+            <button
+              class="button answer hide col-lg-4 align-middle"
+              id="choice-4"
+            ></button>
+          </div>
+          <hr class="hide" id="answerdisplayline" />
+          <div class="row hide justify-content-left" id="answerdisplay"></div>
         </div>
       </div>
-    </form>
-    <div class="row hide" id="high-score">
-      <div class="container col-lg-6 d-flex justify-content-center float-left">High Scores: 
-        <ol class="list-group ol col-lg-6 col-md-6 col-sm-6" id="input-score">
-        </ol>
+      <div class="d-flex justify-content-center">
+        <button class="button" id="start-btn">Start Quiz</button>
+        <button class="button hide" id="score-btn">Submit Score</button>
       </div>
-    </div>
+      <form>
+        <div class="form-row justify-content-center hide mt-2" id="forminput">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <input
+              type="text"
+              id="initials"
+              class="form-control"
+              placeholder="Your Initials"
+            />
+          </div>
+          <div
+            class="col-lg-2 justify-content-center"
+            id="disabledTextInput"
+          ></div>
+        </div>
+      </form>
+      <div class="row hide" id="high-score">
+        <div
+          class="container col-lg-6 d-flex justify-content-center float-left"
+        >
+          High Scores:
+          <ol
+            class="list-group ol col-lg-6 col-md-6 col-sm-6"
+            id="input-score"
+          ></ol>
+        </div>
+      </div>
+    </section>
 
     <script src="./assets/js/script.js"></script>
     <script

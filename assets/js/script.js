@@ -25,7 +25,7 @@ var totalSeconds = 75;
 var interval = "";
 
 //Q&A Arrays
-const questionArr = ["What is Javascript's other name?", "Who first created Javascript?", "How do you source an external script?", "Which is an example of an array?", "Which browser has built-in javascript interpreters?"];
+const questionArr = ["What is Javascript's other name?", "Who first created Javascript?", "How do you source an external script?", "Which is an example of an array?", "Which browser has a built-in javascript interpreter?"];
 const answerArr0 = ["ECMAScript", "CoffeeScript", "Java", "OBJECTScript"];
 const answerArr1 = ["Bill Gates", "Brendan Eich", "Jerry Baldwin", "Loki, god of Mischief"];
 const answerArr2 = ["\<script load=\"\"\>", "\<script href=\"\"\>", "\<script src=\"\"\>", "\<script import=\"\"\>"];
@@ -43,10 +43,10 @@ function doubleStart() {
   submitButton.classList.add("hide");
   startButton.classList.add("hide");
   scoreValue = 0;
+  totalSeconds = 75;
   scoreBoard.innerHTML = "Score: " + scoreValue;
   secondsDisplay.textContent = "Timer: " + totalSeconds;
   questionCounter = 0;
-  totalSeconds = 75;
   questionCounter++;
   startTimer();
   nextQuestion();
@@ -122,6 +122,7 @@ function submitAnswer(event) {
     answerdisplayline.classList.remove("hide");
     answerdisplay.classList.remove("hide");
     answerdisplay.textContent = "Correct!";
+    //loop goes through all buttons and hides them
     for (let i = 0; i < answerButton.length; i++) {
       answerButton[i].classList.add("hide");
     }
@@ -175,8 +176,9 @@ function submitAnswer(event) {
       answerButton[i].classList.add("hide");
     }
   }
-  scoreBoard.innerText = "Score: " + (scoreValue * 100); //Where score is actually updated
-  disabledScore.innerText = "Score: " + (scoreValue * 100); // hidden score value
+  scoreBoard.innerText = "Score: " + (scoreValue * 100); //Where scoreboard is updated
+  disabledScore.innerText = "Score: " + (scoreValue * 100); // Hidden score value for Submit Score
+  //Conditionals for game progression
   if (questionCounter < 6) {
     setTimeout(nextQuestion, 1000);
   }
@@ -186,6 +188,7 @@ function submitAnswer(event) {
   }
 }
 
+//Hides answer div
 function answerDisplay() {
   answerdisplayline.classList.add("hide"); //hide <hr />
   answerdisplay.classList.add("hide"); // hide answer div
@@ -196,13 +199,14 @@ function finishGame() {
   formScore.classList.remove("hide"); // Form div reveal
   submitButton.classList.remove("hide"); //Submit Button reveal
   startButton.classList.remove("hide"); // Start button reveal
-  highScore.classList.remove("hide"); // //high score reveal
-  clearInterval(interval);
+  highScore.classList.remove("hide"); //high score reveal
+  clearInterval(interval); // stops timer from counting down
   for (let i = 0; i < answerButton.length; i++) {
     answerButton[i].classList.add("hide");
   }
 }
 
+//What happens when Submit Score button is clicked
 function submitScore() {
   var node = document.createElement("LI");
   var t = document.createTextNode(inputInit.textContent + ": " + (scoreValue * 100));
@@ -210,10 +214,11 @@ function submitScore() {
   inputScore.appendChild(node);
   submitButton.classList.add("hide");
 }
+//When something changes in form, grabs value
 function getInput(e) {
   inputInit.textContent = e.target.value;
 }
-//loop required to go through answer button Array adding eventListener
+//Event listeners for Start Button, Submit Score, and Form
 startButton.addEventListener("click", doubleStart);
 submitButton.addEventListener("click", submitScore);
 inputInit.addEventListener("change", getInput);
