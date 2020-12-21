@@ -17,7 +17,6 @@ var formScore = document.querySelector("#forminput"); // hidden form
 var inputInit = document.querySelector("#initials"); // hidden text/initials input
 var inputScore = document.querySelector("#input-score"); // hidden UL element
 var disabledScore = document.querySelector("#disabledTextInput"); //hidden score
-
 //Timer, Q&A, score variables
 var questionCounter = 0;
 var scoreValue = 0;
