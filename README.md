@@ -9,7 +9,7 @@
 ---
 ## How to use - 3 easy steps:
 
-1. Click "Start Game".
+1. Click "Start Quiz".
 2. Answer all questions.
 3. Enter your initials and record your score!!
 ---
